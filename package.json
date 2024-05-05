@@ -2,18 +2,21 @@
   "name": "2fa_exp",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
+  "type": "commonjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon server.js",
+    "start": "node server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Ritesh Pramanik",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "express": "^4.19.2",
     "express-session": "^1.18.0",
     "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.3.3",
     "qrcode": "^1.5.3",
     "speakeasy": "^2.0.0"
   },
