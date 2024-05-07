@@ -41,7 +41,7 @@ const login = async (req,res) => {
         const isPasswordCorrect = bcrypt.compareSync(password,user.password);
 
         if(!isPasswordCorrect){
-            return res.status(405).json({success:false,message:'incorrect password'});
+            return res.status(400).json({success:false,message:'incorrect password'});
         }
 
         const data = await User.findById(user._id).select("-password");
@@ -66,7 +66,7 @@ const setUp2FA = async (req,res) => {
         await User.findOneAndUpdate({username},{secret:secret.base32});
 
         QRcode.toDataURL(secret.otpauth_url,(err,data_url)=>{
-            res.json({qrcode:data_url})
+            res.json({success:true,message:'2FA enabled',qrcode:data_url})
         })
     } catch (error) {
         return res.status(500).json({success:false,message:'something went wrong'});
